@@ -27,3 +27,18 @@
         return -x
   ```
 4. 可以返回多个值， 实际上是返回含多个值的tuple
+
+# 高级特性
+1. 切片 slice 正向 反向都可以， 注意反向的第一个元素是-1  ( I feel better than substring method in java and C#).
+  ```
+  >>> 'ABCDEFG'[::2]
+  'ACEG'
+  ```
+2. 迭代， 通过`for ... in`来完成。 默认情况下，dict迭代的是key。如果要迭代value，可以用`for value in d.values()`，如果要同时迭代key和value，可以用`for k, v in d.items()`.  判断对象是否可迭代：`isinstance('abc', Iterable)`.   Python内置的enumerate函数可以把一个list变成索引-元素对，这样就可以在for循环中同时迭代索引和元素本身：
+3. List comprehensions, 列表生成式， 使用`[]`
+4. generator 生成器 ， 使用`()`或者在函数中用`yield`命令，这里generator和函数的执行流程不一样。函数是顺序执行，遇到return语句或者最后一行函数语句就返回。而变成generator的函数，在每次调用`next()`的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行。但是用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在`StopIteration`的value中    quiz: 用generator 和list comprehensions 打印杨辉三角的值
+5. iterator 和 iterable  
+
+  > * 凡是可作用于for循环的对象都是Iterable类型；
+  > * 凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；
+  > * 集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。
