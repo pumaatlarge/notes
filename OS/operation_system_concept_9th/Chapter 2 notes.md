@@ -21,27 +21,27 @@
 ##2.4 Types of System Calls
 
 - 6 major categories:
- |                 | Windows              | Unix       |
- | --------------- | --------------------:| :---------:|
- |Process control  | CreateProcess()      | fork()     |
- 				   | ExitProcess()        | exit()     |
-                   | WaitForSingleObject()| wait()     |
- |File manipulation| CreateFile()         | open()     |
-                   | ReadFile()           | read()     |
-                   | WriteFile()          | write()    |
-                   | CloseHandle()        | close()    |
- |Device manipulation| SetConsoleMode()   | ioctl()    |
-                     |ReadConsole()       | read()     |
-                     |WriteConsole()      | write()    |
- |Information Manipulation | GetCurrentProcessID | getpid() |
-                           | SetTimer()           | alarm()  |
-                           | Sleep()              | sleep()  |
- |Communication            | CreatePipe()         | pipe()   |
-                           | CreateFileMapping()  | shm_open() |
-                           | MapViewOfFile()      | mmap()   |
- |Protection               | SetFileSecurity()    | chmod()  |
-                           | InitlializeSecurityDescriptor() | umask() |
-                           |SetSecurityDescriptorGroup()     | chown() | 
+ |                         | Windows                         | Unix       |
+ | ------------------------| -------------------------------:| :---------:|
+ |Process control          | CreateProcess()                 | fork()     |
+ 				           | ExitProcess()                   | exit()     |
+                           | WaitForSingleObject()           | wait()     |
+ |File manipulation        | CreateFile()                    | open()     |
+                           | ReadFile()                      | read()     |
+                           | WriteFile()                     | write()    |
+                           | CloseHandle()                   | close()    |
+ |Device manipulation      | SetConsoleMode()                | ioctl()    |
+                           |ReadConsole()                    | read()     |
+                            |WriteConsole()                  | write()    |
+ |Information Manipulation | GetCurrentProcessID             | getpid()   |
+                           | SetTimer()                      | alarm()    |
+                           | Sleep()                         | sleep()    |
+ |Communication            | CreatePipe()                    | pipe()     |
+                           | CreateFileMapping()             | shm_open() |
+                           | MapViewOfFile()                 | mmap()     |
+ |Protection               | SetFileSecurity()               | chmod()    |
+                           | InitlializeSecurityDescriptor() | umask()    |
+                           |SetSecurityDescriptorGroup()     | chown()    | 
  
 - process control
   - end, abort
