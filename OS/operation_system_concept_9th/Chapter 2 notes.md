@@ -37,7 +37,8 @@
   - wait event, signal event
   - allocate and free memory
   
- |                | Windows         | Unix       |
- | -------------- | ---------------:| :---------:|
- |Process control | CreateProcess() | fork()     |
- 				  | 
+ |                | Windows              | Unix       |
+ | -------------- | --------------------:| :---------:|
+ |Process control | CreateProcess()      | fork()     |
+ 				  | ExitProcess()        | exit()     |
+                  | WaitForSingleObject()| wait()     ||
