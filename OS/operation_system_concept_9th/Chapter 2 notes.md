@@ -21,6 +21,7 @@
 ##2.4 Types of System Calls
 
 - 6 major categories:
+
  |                         | Windows                         | Unix       |
  | ------------------------| -------------------------------:| :---------:|
  |Process control          | CreateProcess()                 | fork()     |
