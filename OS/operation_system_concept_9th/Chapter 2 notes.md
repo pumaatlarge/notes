@@ -53,4 +53,76 @@
   - wait event, signal event
   - allocate and free memory
   
+- File Management
+  - Create file, delete file
+  - open, close
+  - read write, reposition
+  - get file attribute, set file attribute
+  
+- Device management
+
+  - request device, release device
+  - read write, reposition
+  - get device attribute, set device attribute
+  - logically attach or detach device
+  
+- Information maintenance
+  - get time or date, set time or date
+  - get system data, set system data
+  - get process, file, or device attribute
+  - set process, file, or device attribute
+  
+- Communication (Message passing and share memory)
+  - create, delete communication connection
+  - send, receive message
+  - transfer status information
+  - attach or detach remote device
+  
+
+- Protection
+   - set_permission, get_permission
+   - allow_user, deny_user
+
+#2.5 System Programs
+
+  - File management
+  - Status information
+  - File modification
+  - Programming-language support
+  - Program loading and execution
+  - Communications
+  - Background
  
+#2.6 Operation-System Design and Implementation
+ - Design Goals: user goals and system goals. There is no unique solution to define these goals.
+ - Mechanisms: *how* to do something
+ - policies: *what* will be done
+ - mechanisms and policies need to be separated.
+
+#2.7 Operating-SYstem structure
+
+  - Layered approach
+    - pro: simplicity of constructing and debugging
+    - con: Hard to define layers; less efficient
+  - Microkernels
+    - **Mach** from Carnegie Mellon
+    - communication through message passing
+    - Pro: extensibility, more security and liability
+    - Con: less efficient
+  - Modules
+    - loadable kernel modules
+    - similar to layered system, but more flexible
+    - similar to microkernel, but more efficient for no need of message passing.
+    - 3 hybrid operating system: Mac OS X, iOS, Android
+    
+#2.8 Operating-System debugging
+  - *core* and *core dump* 
+  - *crash* and *crash dump*
+  - performance tuning. *trace listing*
+  - **DTrace**: on *Solaris* system. `D` Programming language, Lines ending with `U` are executed in user mode, and lines ending in `K` in kernel mode.   
+  - **DTrace** is composed of a compiler, a framework , provider of `probes` written within that framework, and `consumers` of `probes`
+  - `consumer` is code that is interested in `probes` and `results`. Within the kernel, actions called `enabling control blocks`, or ECBs, are performed when probes fire.
+  
+#2.9 Operating-System generation
+
+ `system generation SYSGEN`: a process the system configure or generate for each specific computer site
