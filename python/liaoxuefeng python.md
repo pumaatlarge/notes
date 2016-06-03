@@ -46,4 +46,18 @@
   > * 凡是可作用于for循环的对象都是Iterable类型；
   > * 凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；
   > * 集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对象。
+  
 
+# 高阶函数
+
+1. `map`函数接收两个参数，一个是函数，一个是`Iterable`，`map`将传入的函数依次作用到序列的每个元素，并把结果作为新的`Iterator`返回。
+
+2. `reduce`把一个函数作用在一个序列[x1, x2, x3, ...]上，这个函数必须接收两个参数，`reduce`把结果继续和序列的下一个元素做累积计算，
+3. `filter()`把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。
+
+4. `sorted()`函数也是一个高阶函数，它还可以接收一个key函数来实现自定义的排序，例如按绝对值大小排序
+
+5. 函数作为返回值： 高阶函数除了可以接受函数作为参数外，还可以把函数作为结果值返回。  我们在函数`lazy_sum`中又定义了函数`sum`，并且，内部函数`sum`可以引用外部函数`lazy_sum`的参数和局部变量，当`lazy_sum`返回函数sum时，相关参数和变量都保存在返回的函数中，这种称为“闭包（Closure）”的程序结构拥有极大的威力。  返回闭包时牢记的一点就是：返回函数不要引用任何循环变量，或者后续会发生变化的变量
+6. decorator:   every object has a property `_name_`; 本质上，decorator就是一个返回函数的高阶函数; wrapper()函数的参数定义是`(*args, **kw)`，因此，`wrapper()`函数可以接受任意参数的调用。不需要编写`wrapper.__name__ = func.__name__`这样的代码，Python内置的`functools.wraps`就是干这个事的
+ 
+7. partial function: 当函数的参数个数太多，需要简化时，使用`functools.partial`可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
