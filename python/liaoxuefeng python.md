@@ -61,3 +61,65 @@
 6. decorator:   every object has a property `_name_`; 本质上，decorator就是一个返回函数的高阶函数; wrapper()函数的参数定义是`(*args, **kw)`，因此，`wrapper()`函数可以接受任意参数的调用。不需要编写`wrapper.__name__ = func.__name__`这样的代码，Python内置的`functools.wraps`就是干这个事的
  
 7. partial function: 当函数的参数个数太多，需要简化时，使用`functools.partial`可以创建一个新的函数，这个新函数可以固定住原函数的部分参数，从而在调用时更简单。
+
+
+##模块 Module
+
+1. `_author_`: 标明作者
+ 
+2.	
+		if __name__=='__main__':
+		test()
+
+当我们在命令行运行hello模块文件时，Python解释器把一个特殊变量__name__置为__main__，而如果在其他地方导入该hello模块时，if判断将失败，因此，这种if测试可以让一个模块通过命令行运行时执行一些额外的代码，最常见的就是运行测试。
+
+3. 类似`__xxx__`这样的变量是特殊变量，`__author__`, `__name__`, `__doc__`
+4. 类似__xxx和___xxx这样的函数或变量就是非公开的（private），不应该被直接引用，比如`_abc`，`__abc`等；
+5. Python中，安装第三方模块，是通过包管理工具`pip`完成的。
+
+
+## Object oriented programming
+
+###Encapsulation,
+### inheritance, 
+### polymorphism
+
+
+1. class and instance: 面向对象最重要的概念就是类（Class）和实例（Instance）
+ 
+      	class Student (object):
+    		pass
+		bart = Student();
+
+2. `__init__` method, 限制属性  在class中的function第一个参数永远是`self`
+3. 和静态语言不同，Python允许对实例变量绑定任何数据，也就是说，对于两个实例变量，虽然它们都是同一个类的不同实例，但拥有的变量名称都可能不同
+4. 双下划线开头的实例变量是不是一定不能从外部访问呢？其实也不是。不能直接访问__name是因为Python解释器对外把__name变量改成了_Student__name，所以，仍然可以通过_Student__name来访问__name变量
+5. `isinstance()`判断变量是否某个类型。 eg: `isinstance(a, list)`
+6. 对于静态语言（例如Java）来说，如果需要传入Animal类型，则传入的对象必须是Animal类型或者它的子类，否则，将无法调用run()方法。
+    对于Python这样的动态语言来说，则不一定需要传入Animal类型。我们只需要保证传入的对象有一个run()方法就可以了
+
+7. `type()` 判断基本对象类型  `isinstance` 判断class类型 而且能用type()判断的基本类型也可以用isinstance()判断。 并且还可以判断一个变量是否是某些类型中的一种，比如下面的代码就可以判断是否是list或者tuple：
+
+ 		isinstance([1, 2, 3], (list, tuple))
+			True
+ 		isinstance((1, 2, 3), (list, tuple))
+			True
+8. `dir`() 去获得一个对象的所有属性和方法   `getattr()`, `setattr()`, `hasattr()`
+9. `__slots__`变量限制class实例能加的属性， 仅对当前类实例起作用， 对继承的子类不起作用， 除非在子类中也定义`__slots__`，这样，子类实例允许定义的属性就是自身的__slots__加上父类的__slots__。
+10. `@property` 设置 setter 和 getter
+11. 多重继承， 一个子类就可以同时获得多个父类的所有功能。  `Mixin` 
+12. `__str__` 和 `__repr__`, `__iter__`, `__getitem__`, `__getattr__`, `__call__`和 `callable()`
+13. 枚举类型， `@unique`装饰器保证没有重复值
+14. `type()`可以用来返回一个对象的类型， 又可以创建新的类型
+	         
+    	Hello = type('Hello', (object,), dict(hello=fn)) # 创建Hello class
+> 1. class的名称；
+> 
+> 2. 继承的父类集合，注意Python支持多重继承，如果只有一个父类，别忘了tuple的单元素写法；
+> 
+> 3. class的方法名称与函数绑定，这里我们把函数fn绑定到方法名hello上。
+
+15. metalcass
+   
+> 但是如果我们想创建出类呢？那就必须根据metaclass创建出类，所以：先定义metaclass，然后创建类。
+> metaclass是Python面向对象里最难理解，也是最难使用的魔术代码
