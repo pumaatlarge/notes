@@ -126,3 +126,8 @@
 #2.9 Operating-System generation
 
  `system generation SYSGEN`: a process the system configure or generate for each specific computer site
+
+#2.10 System Boot
+
+bootstrap loader in ROM (read-only memory)
+firmware: between software and hardware. expensive, slow
